@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/echarts.js"></script>
+  </head>
+
+  <body>
+    <div class="title">新能源汽车的发展趋势和前景</div>
+    <img src="./image/WechatIMG67.jpeg" class="banner" alt="" />
+    <div class="tab">
+      <div class="tItem" onclick="tab(1)">2021年全球新能源汽车销量</div>
+      <div class="tItem" onclick="tab(2)">2021年12月新能源乘用车销量</div>
+      <div class="tItem" onclick="tab(3)">新能源汽车产量</div>
+      <div class="tItem" onclick="tab(4)">
+        2017-2020我国新能源汽车市场渗透率情况（2016年-2021年）
+      </div>
+    </div>
+    <div id="chart1" class="chart"></div>
+    <div id="chart2" class="chart"></div>
+    <div id="chart3" class="chart"></div>
+    <div id="chart4" class="chart"></div>
+    <!-- <img src="./image/世界地图.png" class="i1" alt="" />
+    <img src="./image/绿色地球.png" class="i2" alt="" />
+    <img src="./image/充电桩.png" class="i3" alt="" />
+    <img src="./image/新能源汽车.png" class="i4" alt="" />
+    <img src="./image/新能源汽车 (2).png" class="i5" alt="" />
+    <img src="./image/绿色城市.png" class="i6" alt="" />
+    <img src="./image/污染严重.png" class="i7" alt="" />
+    <img src="./image/竞争.png" class="i8" alt="" />
+    <img src="./image/进出口.png" class="i9" alt="" />
+    <img src="./image/合作.png" class="i10" alt="" /> -->
+  </body>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+    .title {
+      background-color: #006686;
+      width: 100vw;
+      height: 5vh;
+      text-align: center;
+      color: #fff;
+      line-height: 5vh;
+    }
+    .tab {
+      width: 100vw;
+      height: 10vh;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .tItem {
+      width: 20vw;
+      height: 5vh;
+      text-align: center;
+      line-height: 5vh;
+      color: #fff;
+      background-color: #006686;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .chart {
+      width: 100vw;
+      height: 45vh;
+    }
+    .banner {
+      width: 30vw;
+      height: 35vh;
+      margin-left: 35vw;
+    }
+    .i1 {
+      position: absolute;
+      top: 40vh;
+      left: 0;
+      z-index: -100;
+      height: 20vh;
+    }
+    .i2 {
+      position: absolute;
+      top: 5vh;
+      right: 0;
+      z-index: -100;
+      height: 20vh;
+    }
+    .i3 {
+      position: absolute;
+      top: 60vh;
+      right: 0;
+      z-index: -100;
+      height: 20vh;
+    }
+    .i4 {
+      position: absolute;
+      top: 60vh;
+      left: 30vw;
+      z-index: -100;
+      height: 20vh;
+    }
+    .i5 {
+      position: absolute;
+      top: 80vh;
+      right: 20vw;
+      z-index: -100;
+      height: 20vh;
+    }
+    .i6 {
+      position: absolute;
+      top: 40vh;
+      left: 20vw;
+      z-index: -100;
+      height: 20vh;
+    }
+    .i7 {
+      position: absolute;
+      top: 120vh;
+      right: 40vw;
+      z-index: -100;
+      height: 20vh;
+    }
+    .i8 {
+      position: absolute;
+      top: 140vh;
+      right: 0;
+      z-index: -100;
+      height: 20vh;
+    }
+    .i9 {
+      position: absolute;
+      top: 160vh;
+      right: 50vw;
+      z-index: -100;
+      height: 20vh;
+    }
+    .i10 {
+      position: absolute;
+      top: 180vh;
+      left: 0;
+      z-index: -100;
+      height: 20vh;
+    }
+  </style>
+
+  <script>
+    let chart = echarts.init(document.getElementById("chart1"));
+    chart1 = {
+      tooltip: {
+        axisPointer: {
+          type: "line",
+        },
+      },
+
+      title: {
+        show: true,
+        text: "2021年全球新能源汽车销量",
+        textStyle: {
+          color: "#000000",
+          fontSize: 22,
+        },
+        x: "center",
+        top: 10,
+      },
+      grid: {
+        left: 80,
+        right: 80,
+        top: 50,
+        bottom: 30,
+      },
+      legend: {
+        right: 80,
+      },
+      yAxis: {
+        data: [
+          "德国",
+          "中国",
+          "俄罗斯",
+          "美国",
+          "非洲",
+          "法国",
+          "日本",
+          "荷兰",
+        ],
+
+        axisLabel: {
+          fontSize: 14,
+          textStyle: {
+            color: "#999",
+          },
+        },
+        axisTick: {
+          show: true,
+        },
+        axisLine: {
+          show: true,
+        },
+        z: 10,
+        inverse: true,
+      },
+      xAxis: {
+        name: "辆",
+
+        axisLine: {
+          show: true,
+        },
+        axisTick: {
+          show: true,
+        },
+        axisLabel: {
+          fontSize: 14,
+          textStyle: {
+            color: "#999",
+          },
+        },
+      },
+
+      series: [
+        {
+          type: "bar",
+          itemStyle: {
+            normal: {
+              color: "rgba(0,0,0,0.05)",
+            },
+          },
+          barGap: "-100%",
+          barCategoryGap: "40%",
+          data: [
+            3000000, 3000000, 3000000, 3000000, 3000000, 3000000, 3000000,
+            3000000,
+          ],
+          animation: true,
+        },
+        {
+          name: "销量（辆）",
+          type: "bar",
+
+          itemStyle: {
+            normal: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+
+                  color: "#C64034",
+                },
+                {
+                  offset: 0.5,
+                  color: "#C64034",
+                },
+                {
+                  offset: 1,
+                  color: "#C64034",
+                },
+              ]),
+            },
+            emphasis: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+                  color: "#F9A79B",
+                },
+                {
+                  offset: 0.7,
+                  color: "#F9A79B",
+                },
+                {
+                  offset: 1,
+                  color: "#F9A79B",
+                },
+              ]),
+            },
+          },
+          label: {
+            show: true,
+            position: "right",
+          },
+          data: [
+            2600000, 2400000, 1680000, 1300000, 931056, 315000, 45000, 23150,
+          ],
+        },
+      ],
+    };
+
+    // let chart2 = echarts.init(document.getElementById("chart2"));
+    chart2 = {
+      title: {
+        show: true,
+        text: "2021年12月新能源乘用车销量",
+        textStyle: {
+          color: "#000000",
+          fontSize: 22,
+        },
+        x: "center",
+        top: 10,
+      },
+      grid: {
+        left: 80,
+        right: 80,
+        top: 50,
+        bottom: 30,
+      },
+      tooltip: {
+        trigger: "axis",
+        axisPointer: {
+          type: "shadow",
+        },
+      },
+
+      legend: {
+        right: 80,
+      },
+      xAxis: [
+        {
+          type: "category",
+          data: [
+            "宏光MINIEV",
+            "特斯拉Model Y",
+            "特斯拉Model 3",
+            "比亚迪秦",
+            "比亚迪宋",
+            "理想ONE",
+            "比亚迪汉",
+            "欧拉好猫",
+            "奔奔EV",
+            "奇瑞eQ",
+            "比亚迪海豚",
+            "比亚迪唐",
+            "比亚迪元",
+            "奇瑞QQ冰激凌",
+            "欧拉黑猫",
+          ],
+        },
+      ],
+      //y坐标轴
+      yAxis: [
+        {
+          type: "value",
+        },
+      ],
+      // 数据展示区域
+      series: [
+        {
+          name: "12月销量（辆）",
+          type: "line",
+
+          color: "#5b8ff9",
+          // stack: "Ad",
+          // barWidth: 18,
+          label: {
+            show: true,
+            position: "top",
+            color: "#5b8ff9",
+          },
+          data: [
+            50561, 40500, 10202, 25940, 19142, 14087, 13701, 10482, 10404,
+            10141, 10016, 8700, 8577, 8390, 8056,
+          ],
+        },
+        {
+          name: "1～12月累计销量（辆）",
+          type: "line",
+          color: "#61ddaa",
+          // stack: "Ad",
+          // barWidth: 18,
+          label: {
+            show: true,
+            position: "top",
+            color: "#61ddaa",
+          },
+          data: [
+            395451, 169853, 150890, 187227, 104244, 90491, 117323, 49900, 76381,
+            76987, 0, 50116, 40534, 0, 63492,
+          ],
+        },
+      ],
+    };
+
+    // let chart3 = echarts.init(document.getElementById("chart3"));
+    chart3 = {
+      title: {
+        show: true,
+        text: "新能源汽车产量（2016年-2021年）",
+        textStyle: {
+          color: "#000000",
+          fontSize: 22,
+        },
+        x: "center",
+        top: 10,
+      },
+      grid: {
+        left: 80,
+        right: 80,
+        top: 50,
+        bottom: 30,
+      },
+      tooltip: {
+        trigger: "axis",
+        axisPointer: {
+          type: "shadow",
+        },
+      },
+      legend: {
+        right: 80,
+      },
+
+      xAxis: {
+        type: "category",
+        data: ["2016年", "2017年", "2018年", "2019年", "2020年", "2021年"],
+      },
+      yAxis: {
+        type: "value",
+      },
+      series: [
+        {
+          name: "产量（万辆）",
+          type: "bar",
+          barWidth: 25,
+          barGap: "40%",
+          color: "rgba(48,103,131,1)",
+          label: {
+            show: true,
+            position: "top",
+            color: "rgba(48,103,131,1)",
+            borderWidth: 1,
+            borderColor: "rgba(48,103,131,1)",
+            padding: [1, 2],
+          },
+          data: [51.7, 79.4, 127.0, 124.2, 136.6, 254.5],
+        },
+        {
+          name: "销量（万辆）",
+          type: "bar",
+          barWidth: 25,
+          barGap: "40%",
+          color: "rgba(235,125,49,1)",
+          label: {
+            show: true,
+            position: "top",
+            color: "rgba(235,125,49,1)",
+            borderWidth: 1,
+            borderColor: "rgba(235,125,49,1)",
+            padding: [1, 2],
+          },
+          data: [50.77, 77.7, 125.6, 120.6, 136.7, 352.1],
+        },
+      ],
+    };
+
+    // let chart4 = echarts.init(document.getElementById("chart4"));
+    chart4 = {
+      title: {
+        show: true,
+        text: "2017-2020我国新能源汽车市场渗透率情况",
+        textStyle: {
+          color: "#000000",
+          fontSize: 22,
+        },
+        x: "center",
+        top: 10,
+      },
+      grid: {
+        left: 80,
+        right: 80,
+        top: 50,
+        bottom: 30,
+      },
+      tooltip: {
+        trigger: "axis",
+        axisPointer: {
+          type: "shadow",
+        },
+      },
+
+      legend: {
+        right: 80,
+      },
+      xAxis: [
+        {
+          type: "category",
+          data: ["2017年", "2018年", "2019年", "2020年", "2021年"],
+        },
+      ],
+      //y坐标轴
+      yAxis: [
+        {
+          type: "value",
+        },
+      ],
+      // 数据展示区域
+      series: [
+        {
+          name: "市场渗透率（%）",
+          type: "line",
+          smooth: true,
+          color: "#006686",
+          // stack: "Ad",
+          // barWidth: 18,
+          label: {
+            show: true,
+            position: "top",
+            color: "#006686",
+            formatter(e) {
+              return e.value + "%";
+            },
+          },
+          data: [2.4, 4.5, 5.0, 6.3, 16.0],
+        },
+      ],
+    };
+    chart.setOption(chart1);
+    function tab(e) {
+      chart.clear();
+      if (e == 1) chart.setOption(chart1);
+      if (e == 2) chart.setOption(chart2);
+      if (e == 3) chart.setOption(chart3);
+      if (e == 4) chart.setOption(chart4);
+    }
+
+    window.onresize = function () {
+      chart1.resize();
+      // chart2.resize();
+      // chart3.resize();
+      // chart4.resize();
+    };
+  </script>
+</html>

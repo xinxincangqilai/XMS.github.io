@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新能源乘用车销量</title>
+    <script src="echarts.js"></script>
+</head>
+<body>
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+  
+        // 指定图表的配置项和数据
+        var option = {
+           
+      tooltip: {
+        axisPointer: {
+          type: "line",
+        },
+      },
+
+      title: {
+        show: true,
+        text: "2021年全球新能源汽车销量",
+        textStyle: {
+          color: "#000000",
+          fontSize: 22,
+        },
+        x: "center",
+        top: 10,
+      },
+      grid: {
+        left: 80,
+        right: 80,
+        top: 50,
+        bottom: 30,
+      },
+      legend: {
+        right: 80,
+      },
+      yAxis: {
+        data: [
+          "德国",
+          "中国",
+          "俄罗斯",
+          "美国",
+          "非洲",
+          "法国",
+          "日本",
+          "荷兰",
+        ],
+
+        axisLabel: {
+          fontSize: 14,
+          textStyle: {
+            color: "#999",
+          },
+        },
+        axisTick: {
+          show: true,
+        },
+        axisLine: {
+          show: true,
+        },
+        z: 10,
+        inverse: true,
+      },
+      xAxis: {
+        name: "辆",
+
+        axisLine: {
+          show: true,
+        },
+        axisTick: {
+          show: true,
+        },
+        axisLabel: {
+          fontSize: 14,
+          textStyle: {
+            color: "#999",
+          },
+        },
+      },
+
+      series: [
+        {
+          type: "bar",
+          itemStyle: {
+            normal: {
+              color: "rgba(0,0,0,0.05)",
+            },
+          },
+          barGap: "-100%",
+          barCategoryGap: "40%",
+          data: [
+            3000000, 3000000, 3000000, 3000000, 3000000, 3000000, 3000000,
+            3000000,
+          ],
+          animation: true,
+        },
+        {
+          name: "销量（辆）",
+          type: "bar",
+
+          itemStyle: {
+            normal: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+
+                  color: "#C64034",
+                },
+                {
+                  offset: 0.5,
+                  color: "#C64034",
+                },
+                {
+                  offset: 1,
+                  color: "#C64034",
+                },
+              ]),
+            },
+            emphasis: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+                  color: "#F9A79B",
+                },
+                {
+                  offset: 0.7,
+                  color: "#F9A79B",
+                },
+                {
+                  offset: 1,
+                  color: "#F9A79B",
+                },
+              ]),
+            },
+          },
+          label: {
+            show: true,
+            position: "right",
+          },
+          data: [
+            2600000, 2400000, 1680000, 1300000, 931056, 315000, 45000, 23150,
+          ],
+        },
+      ],
+    };
+
+        ;
+  
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+      </script>
+</body>
+</html>

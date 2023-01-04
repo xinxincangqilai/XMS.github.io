@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新能源乘用车销量</title>
+    <script src="echarts.js"></script>
+</head>
+<body>
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+  
+        // 指定图表的配置项和数据
+        var option = {
+           
+      tooltip: {
+        axisPointer: {
+          type: "line",
+        },
+      },
+
+      title: {
+        show: true,
+        text: "2017-2020我国新能源汽车市场渗透率情况",
+        textStyle: {
+          color: "#000000",
+          fontSize: 22,
+        },
+        x: "center",
+        top: 10,
+      },
+      grid: {
+        left: 80,
+        right: 80,
+        top: 50,
+        bottom: 30,
+      },
+      tooltip: {
+        trigger: "axis",
+        axisPointer: {
+          type: "shadow",
+        },
+      },
+
+      legend: {
+        right: 80,
+      },
+      xAxis: [
+        {
+          type: "category",
+          data: ["2017年", "2018年", "2019年", "2020年", "2021年"],
+        },
+      ],
+      //y坐标轴
+      yAxis: [
+        {
+          type: "value",
+        },
+      ],
+      // 数据展示区域
+      series: [
+        {
+          name: "市场渗透率（%）",
+          type: "line",
+          smooth: true,
+          color: "#006686",
+          // stack: "Ad",
+          // barWidth: 18,
+          label: {
+            show: true,
+            position: "top",
+            color: "#006686",
+            formatter(e) {
+              return e.value + "%";
+            },
+          },
+          data: [2.4, 4.5, 5.0, 6.3, 16.0],
+        },
+      ],
+    };
+
+        ;
+  
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+      </script>
+</body>
+</html>
